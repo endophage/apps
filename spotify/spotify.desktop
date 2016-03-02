@@ -1,6 +1,6 @@
 [Desktop Entry]
+Type=Application
 Name=Spotify
 Icon=spotify
 Exec=gksu "docker run --rm -v /etc/localtime:/etc/localtime:ro -v $HOME/.spotify:/home/spotify -v /tmp/.X11-unix:/tmp/.X11-unix -v /run/user/$UID/pulse/native:/pulse -e DISPLAY=unix$DISPLAY --name spotify endophage/apps:spotify"
-Type=Application
 Terminal=false
