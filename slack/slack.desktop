@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type     = Application
+Name     = Slack
+Icon     = slack
+Exec     = /bin/sh -c "docker run --rm -v /etc/localtime:/etc/localtime:ro -v /home/david/.spotify:/home/spotify -v /tmp/.X11-unix:/tmp/.X11-unix -v /run/user/1000/pulse/native:/pulse -e DISPLAY=unix:0 --name slack endophage/apps:slack"
+Terminal = false
+
