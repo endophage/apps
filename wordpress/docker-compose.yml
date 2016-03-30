@@ -1,0 +1,11 @@
+wordpress:
+    image: wordpress:latest
+    links:
+        - mysql
+    ports:
+        - "8080:80"
+mysql:
+    image: mariadb:10.1.10
+    environment:
+        - MYSQL_ROOT_PASSWORD="password"
+    
