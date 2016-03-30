@@ -1,5 +1,5 @@
 wordpress:
-    image: wordpress:latest
+    image: endophage/wordpress:latest
     links:
         - mysql
     ports:

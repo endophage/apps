@@ -17,7 +17,15 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318
 	&& echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list \
 	&& apt-get update \
 	&& apt-get install -y --no-install-recommends \
-		spotify-client libpangoxft-1.0-0 libcanberra-gtk-module pulseaudio software-properties-common \
+		libcanberra-gtk-module \
+		libgl1-mesa-glx \
+		libpangoxft-1.0-0 \
+		libxss1 \
+		pulseaudio \
+		software-properties-common \
+		xdg-utils \
+	&& apt-get install -y --force-yes \
+		spotify-client \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& adduser --disabled-login --home $HOME --gecos "" spotify \
 	&& adduser spotify audio \
