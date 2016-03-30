@@ -6,8 +6,6 @@ wordpress:
         - "8080:80"
     environment:
         - DB_PASSWORD=2671d40f658f595f49cd585db8e522cc955d916ee92b67002adcf8127196e6b2
-    security_opt:
-        - apparmor:wparmor
 mysql:
     image: mariadb:10.1.10
     environment:
