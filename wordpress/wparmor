@@ -33,8 +33,13 @@ profile wparmor flags=(attach_disconnected,mediate_deleted) {
   deny /sys/firmware/efi/efivars/** rwklx,
   deny /sys/kernel/security/** rwklx,
 
-  deny /var/www/html/** w,
-  owner /var/www/html/wp-content/uploads/** rwk,
+  deny /var/www/html/* wlx,
+  deny /var/www/html/wp-admin/** wlx,
+  deny /var/www/html/wp-includes/** wlx,
+  deny /var/www/html/wp-content/* wlx,
+  deny /var/www/html/wp-content/plugins/** wlx,
+  deny /var/www/html/wp-content/themes/** wlx,
+  owner /var/www/html/wp-content/uploads/** rwkix,
 
   # suppress ptrace denials when using 'docker ps' or using 'ps' inside a container
   ptrace (trace,read) peer=docker-default,
