@@ -2,9 +2,10 @@
 #
 # docker run --rm \
 #	-v /etc/localtime:/etc/localtime:ro \
-#	-v $HOME/.slack:/home/slack \
+#	-v slack:/home/slack \
 #	-v /tmp/.X11-unix:/tmp/.X11-unix \
 #	-v /run/user/$UID/pulse/native:/pulse \
+#	-e XAUTHORITY=/tmp/Xauthority \
 #	-e DISPLAY=unix$DISPLAY \
 #   --name slack \
 #   endophage/apps:slack
@@ -23,6 +24,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		hunspell-en-us \
 		libcanberra-gtk-module \
 		libgcrypt20 \
+		libgl1-mesa-dev \
+		libgl1-mesa-dri-lts-wily \
 		libgtk2.0-0 \
 		libnotify4 \
 		libnss3 \
@@ -34,6 +37,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		pulseaudio \
 		python \
 		xdg-utils \
+		xauth \
 	&& echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
 	&& locale-gen en_US.utf8 \
 	&& /usr/sbin/update-locale LANG=en_US.UTF-8 \
