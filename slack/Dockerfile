@@ -3,6 +3,7 @@
 # docker run --rm \
 #	-v /etc/localtime:/etc/localtime:ro \
 #	-v slack:/home/slack \
+#	-v /dev/shm:/dev/shm \
 #	-v /tmp/.X11-unix:/tmp/.X11-unix \
 #	-v /run/user/$UID/pulse/native:/pulse \
 #	-e XAUTHORITY=/tmp/Xauthority \
@@ -26,6 +27,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		libgcrypt20 \
 		libgl1-mesa-dev \
 		libgl1-mesa-dri-lts-wily \
+		libgnome-keyring0 \
 		libgtk2.0-0 \
 		libnotify4 \
 		libnss3 \
@@ -41,7 +43,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	&& echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
 	&& locale-gen en_US.utf8 \
 	&& /usr/sbin/update-locale LANG=en_US.UTF-8 \
-	&& curl -sSL https://slack-ssb-updates.global.ssl.fastly.net/linux_releases/slack-desktop-1.2.2-amd64.deb > /tmp/slack-desktop.deb \
+	&& curl -sSL https://downloads.slack-edge.com/linux_releases/slack-desktop-2.0.5-amd64.deb > /tmp/slack-desktop.deb \
 	&& dpkg -i /tmp/slack-desktop.deb \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& adduser --disabled-login --home $HOME --gecos "" slack \
