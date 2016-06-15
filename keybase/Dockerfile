@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		apt-transport-https \
 		ca-certificates \
 		curl \
+		pass \
 	&& curl -O https://dist.keybase.io/linux/deb/keybase-latest-amd64.deb \
 	&& dpkg -i keybase-latest-amd64.deb \
 	&& adduser --disabled-login --home $HOME --gecos "" keybase \
